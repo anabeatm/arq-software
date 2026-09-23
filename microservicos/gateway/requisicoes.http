@@ -1,0 +1,15 @@
+# GET http://localhost:3000/produtos
+
+# GET http://localhost:3000/pedidos
+
+# GET http://localhost:3000/clientes
+
+POST http://localhost:3000/clientes
+Content-Type: application/json
+
+{
+  "nome": "Maria",
+  "sobrenome": "Souza",
+  "telefone": "46988888888",
+  "email": "maria@email.com"
+}
