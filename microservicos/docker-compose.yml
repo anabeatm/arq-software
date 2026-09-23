@@ -14,9 +14,38 @@ services:
     ports:
       - "3002:3002"
     environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/pedidos_db
       PRODUTOS_URL: http://produto:3001
+      CLIENTES_URL: http://clientes:3003
+    depends_on:
+      postgres:
+        condition: service_healthy
+      produto:
+        condition: service_started
+      clientes:
+        condition: service_started
+
+  clientes:
+    build: ./clientes
+    ports:
+      - "3003:3003"
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/clientes_db
+    depends_on:
+      postgres:
+        condition: service_healthy
+  gateway:
+    build: ./gateway
+    ports:
+      - "3000:3000"
+    environment:
+      PRODUTOS_URL: http://produto:3001
+      PEDIDOS_URL: http://pedido:3002
+      CLIENTES_URL: http://clientes:3003
     depends_on:
       - produto
+      - pedido
+      - clientes
 
   postgres:
     image: postgres:16-alpine
@@ -28,6 +57,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d produtos_db"]
       interval: 5s
