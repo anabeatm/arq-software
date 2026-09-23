@@ -1,0 +1,9 @@
+POST http://localhost:3003/clientes
+Content-Type: application/json
+
+{
+  "nome": "Maria",
+  "sobrenome": "Oliveira",
+  "telefone": "46991112222",
+  "email": "carlos@email.com"
+}
