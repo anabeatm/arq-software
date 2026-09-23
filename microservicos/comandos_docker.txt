@@ -1,0 +1,7 @@
+docker exec -it microservicos-postgres-1 psql -U postgres -d clientes_db -c "SELECT * FROM clientes;"
+
+docker exec -it microservicos-postgres-1 psql -U postgres -d produtos_db -c "SELECT * FROM produtos;"
+
+docker exec -it microservicos-postgres-1 psql -U postgres -d produtos_db -c "SELECT * FROM produtos;"
+
+docker exec -it microservicos-postgres-1 psql -U postgres -d pedidos_db -c "\d pedidos"
