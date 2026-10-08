@@ -1,24 +1,38 @@
-# GET http://localhost:3000/produtos
+### verificar conexao com produtos
+GET http://localhost:3000/produtos
 
+### verificar conexao com pedidos
 GET http://localhost:3000/pedidos
 
-# GET http://localhost:3000/clientes
+### verificar conexao com clientes
+GET http://localhost:3000/clientes
 
-# POST http://localhost:3000/clientes
-# Content-Type: application/json
+### criando cliente
+POST http://localhost:3000/clientes
+Content-Type: application/json
 
-# {
-#   "nome": "Maria",
-#   "sobrenome": "Souza",
-#   "telefone": "46988888888",
-#   "email": "maria@email.com"
-# }
+{
+  "nome": "Agnaldo",
+  "sobrenome": "Freitas",
+  "telefone": "446767676769",
+  "email": "aaaaaa@email.com"
+}
 
-# POST http://localhost:3000/pedidos
-# Content-Type: application/json
+### criando pedido
+POST http://localhost:3000/pedidos
+Content-Type: application/json
 
-# {
-#   "cliente_id": 999,
-#   "produtoId": 1,
-#   "quantidade": 2
-# }
+{
+  "cliente_id": 5,
+  "produtoId": 2,
+  "quantidade": 1
+}
+
+### Criar prod
+POST http://localhost:3000/produtos
+Content-Type: application/json
+
+{
+  "nome": "sapatilha",
+  "preco": 365
+}
